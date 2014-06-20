@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# learn weights on the first 3 Cora db files
+java -jar /ucsc/tuffy/tuffy.jar -conf /ucsc/tuffy/tuffy.conf \
+-i prog_cs.mln -queryFile query_cs.db \
+-e coraSepFixedhwng.1.db,coraSepFixedhwng.2.db,coraSepFixedhwng.3.db \
+-learnwt -r out.txt -mcsatSamples 50 -dMaxIter 50
+
+# run inference using the new weights
+#java -jar /ucsc/tuffy/tuffy.jar -conf /ucsc/tuffy/tuffy.conf \
+#-i prog_cs_wts.mln -queryFile query_cs.db \
+#-e coraSepFixedhwng.1.db,coraSepFixedhwng.2.db,coraSepFixedhwng.3.db,coraSepFixedhwng.4.db,coraSepFixedhwng.5.db \
+#-r out.txt
+
+# run marginal inference using the new weights
+#java -jar /ucsc/tuffy/tuffy.jar -conf /ucsc/tuffy/tuffy.conf \
+#-i prog_cs_wts.mln -queryFile query_cs.db \
+#-e coraSepFixedhwng.1.db,coraSepFixedhwng.2.db,coraSepFixedhwng.3.db,coraSepFixedhwng.4.db,coraSepFixedhwng.5.db \
+#-marginal -r out.txt
